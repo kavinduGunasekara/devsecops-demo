@@ -1,4 +1,4 @@
-# DevSecOps Pipeline Implementation for Tic Tac Toe Game
+![5 run projectlocaaly](https://github.com/user-attachments/assets/4088a0ca-09d1-42b9-80cc-e2f863e35e38)# DevSecOps Pipeline Implementation for Tic Tac Toe Game
 
 ![Screenshot 2025-03-04 at 7 16 48 PM](https://github.com/user-attachments/assets/7ed79f9c-9144-4870-accd-500085a15592)
 
@@ -126,6 +126,7 @@ The game implements the following rules:
    ```
 
 4. Open your browser and navigate to `http://localhost:5173`
+   
 
 ## Building for Production
 
@@ -136,11 +137,17 @@ npm run build
 # or
 yarn build
 ```
+![3do build](https://github.com/user-attachments/assets/94c4924f-28db-4c31-9be5-f22a3eb0be43)
 
 The build artifacts will be stored in the `dist/` directory.
 
+Acess the project locally
+
+![5 run projectlocaaly](https://github.com/user-attachments/assets/d775811c-db69-408c-b8ee-e21a5451f544)
 
 ## Start DevSecOps pipeline
+
+How to write Dockerfile
 
 
 
