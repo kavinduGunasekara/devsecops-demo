@@ -146,8 +146,61 @@ Acess the project locally
 ![5 run projectlocaaly](https://github.com/user-attachments/assets/d775811c-db69-408c-b8ee-e21a5451f544)
 
 ## Start DevSecOps pipeline
+Before devsecops you need to learn continerize
+learn how to write docker file and how to build the docker image locally after go to devsecops 
 
 How to write Dockerfile
+You can write docker file in three simple step 
+ you did it locally
+ 
+1. download dependencies
+2. build application
+3. once you build the application you get the disc folder
+4. copy disck folder on the **Nginx** (it will be webserver it can be nginx or what ever)
+
+
+If you have these in your docker file  docker image also work
+
+How do we do it it's always best practice to use multistage docker files or Docker build
+previous what we will do
+**First Stage**
+1. dowonload dep
+2. build
+3. create the artifact
+
+**Second Stage**
+1.Just install nginx
+2.run nginx server
+3.put disk artifact in to the nginx HTML location or the location from where nginx can server 
+the static content.
+what happen because of that the docker image size will shrink drastically in the first you have
+the dependencies which are Huge and youhave all the other things related to npm.
+ypu can avoid the by coping only the disc folder to the nginx image.
+
+**Let's Do it**
+
+
+  FROM node -20:alpine as build
+  workdir /app   ##if thes folder does not exit in the docker image it will be created
+  ## then we do not completly copy the source code
+  ## first copy package.json on to the docker image
+  copy package.json .
+  ## the run to the install the dependencies that are in the package.json
+  ## download the dependencies from the package.json
+  RUN npm ci
+  copy . .   ## this copy every thing in your folder to the  docker image working directory
+  **first . is current directory every thing in current directory of your application
+will be coppied to the current directory of docker image which is /app 
+  Run npm run dev ## whatever is provieded by the developer so that the artifacts are push to t
+the disk folder, whrer it wil be push it will bepushed to the /app/disk in the perticular case
+becasue /app is working directory , it will not be pushed to SL dis directory It will be pushed
+to do /app/disk
+
+**Now that we have the disk directory what we will do we will go to the second stage**
+
+FROM nginx
+ ## what we will do is from the first stage 
+
 
 
 
